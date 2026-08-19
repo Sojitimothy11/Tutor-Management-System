@@ -326,61 +326,58 @@
 <div class="col-sm-12">
 <div class="card">
 <div class="card-body">
-<form>
+<form id="feePaymentForm" novalidate>
+<div id="feePaymentFormAlert"></div>
 <div class="row">
 <div class="col-12">
 <h5 class="form-title"><span>Fees Information</span></h5>
 </div>
 <div class="col-12 col-sm-6">
 <div class="form-group">
-<label>Student ID</label>
-<input type="text" class="form-control">
-</div>
-</div>
-<div class="col-12 col-sm-6">
-<div class="form-group">
-<label>Student Name</label>
-<input type="text" class="form-control">
-</div>
-</div>
-<div class="col-12 col-sm-6">
-<div class="form-group">
-<label>Gender</label>
-<select class="form-control">
-<option>Select Gender</option>
-<option>Female</option>
-<option>Male</option>
-<option>Others</option>
+<label>Student</label>
+<select class="form-control" name="studentId" id="studentId" required>
+<option value="">-- Select Student --</option>
 </select>
 </div>
 </div>
 <div class="col-12 col-sm-6">
 <div class="form-group">
 <label>Fees Type</label>
-<select class="form-control">
-<option>Select Type</option>
-<option>Class Test</option>
-<option>Exam Fees</option>
-<option>Hostel Fees</option>
-<option>Transport Fees</option>
-<option>Mess Fees</option>
+<select class="form-control" name="feeStructureId" id="feeStructureId" required>
+<option value="">-- Select Fee --</option>
 </select>
 </div>
 </div>
 <div class="col-12 col-sm-6">
 <div class="form-group">
-<label>Fees Amount</label>
-<input type="text" class="form-control">
+<label>Amount Paid</label>
+<input type="number" step="0.01" min="0.01" class="form-control" name="amountPaid" id="amountPaid" required>
 </div>
 </div>
 <div class="col-12 col-sm-6">
 <div class="form-group">
 <label>Paid Date</label>
-<input type="date" class="form-control">
+<input type="date" class="form-control" name="paymentDate" id="paymentDate">
+</div>
+</div>
+<div class="col-12 col-sm-6">
+<div class="form-group">
+<label>Payment Method</label>
+<input type="text" class="form-control" name="paymentMethod" id="paymentMethod" placeholder="e.g. Cash, Bank Transfer">
+</div>
+</div>
+<div class="col-12 col-sm-6">
+<div class="form-group">
+<label>Status</label>
+<select class="form-control" name="status" id="status">
+<option value="PENDING">Pending</option>
+<option value="PARTIAL">Partial</option>
+<option value="PAID">Paid</option>
+</select>
 </div>
 </div>
 <div class="col-12">
-<button type="submit" class="btn btn-primary">Submit</button>
+<button type="submit" class="btn btn-primary" id="feePaymentSubmit">Submit</button>
 </div>
 </div>
 </form>
@@ -402,6 +399,9 @@
 <script src="assets/plugins/slimscroll/jquery.slimscroll.min.js"></script>
 
 <script src="assets/js/script.js"></script>
+<script src="assets/js/tms/api.js"></script>
+<script src="assets/js/tms/guard.js"></script>
+<script src="assets/js/tms/fee-payment-form.js"></script>
 </body>
 
 </html>

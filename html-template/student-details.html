@@ -463,6 +463,7 @@
                 <div class="col-md-12">
                   <div class="about-info">
                     <h4>About Me</h4>
+                    <div id="studentDetailsAlert"></div>
                     <div class="media mt-3">
                       <img
                         src="assets\img\profiles\avatar-10.jpg"
@@ -473,81 +474,59 @@
                         <ul>
                           <li>
                             <span class="title-span">Full Name : </span>
-                            <span class="info-span">Nathan Humphries</span>
+                            <span class="info-span" id="sd-name">-</span>
+                          </li>
+                          <li>
+                            <span class="title-span">Admission No : </span>
+                            <span class="info-span" id="sd-admissionNo">-</span>
                           </li>
                           <li>
                             <span class="title-span">Department : </span>
-                            <span class="info-span">Computer Science</span>
+                            <span class="info-span" id="sd-department">-</span>
                           </li>
                           <li>
                             <span class="title-span">Mobile : </span>
-                            <span class="info-span">077 3499 9959</span>
-                          </li>
-                          <li>
-                            <span class="title-span">Email : </span>
-                            <span class="info-span"
-                              ><a
-                                href=""
-                                class="__cf_email__"
-                                data-cfemail="7216131b010b32151f131b1e5c111d1f"
-                                >[email&#160;protected]</a
-                              ></span
-                            >
+                            <span class="info-span" id="sd-phone">-</span>
                           </li>
                           <li>
                             <span class="title-span">Gender : </span>
-                            <span class="info-span">Male</span>
+                            <span class="info-span" id="sd-gender">-</span>
                           </li>
                           <li>
                             <span class="title-span">DOB : </span>
-                            <span class="info-span">26 Apr 1994</span>
+                            <span class="info-span" id="sd-dob">-</span>
                           </li>
                           <li>
-                            <span class="title-span">Personal Tutor:</span>
-                            <span class="info-span">Daisy Park</span>
+                            <span class="title-span">Status : </span>
+                            <span class="info-span" id="sd-status">-</span>
                           </li>
                         </ul>
-                      </div>
-                    </div>
-                    <div class="row mt-3">
-                      <div class="col-md-12">
-                        <p>
-                          Hello I am Nathan Humphries. A dedicated student of
-                          computer science department, I am detail oriented and
-                          a goal getter.
-                        </p>
                       </div>
                     </div>
                     <div class="row follow-sec">
                       <div class="col-md-4 mb-3">
                         <div class="blue-box">
-                          <h3>2850</h3>
-                          <p>Followers</p>
+                          <h3 id="sd-guardianName">-</h3>
+                          <p>Guardian Name</p>
                         </div>
                       </div>
                       <div class="col-md-4 mb-3">
                         <div class="blue-box">
-                          <h3>2050</h3>
-                          <p>Following</p>
+                          <h3 id="sd-guardianPhone">-</h3>
+                          <p>Guardian Phone</p>
                         </div>
                       </div>
                       <div class="col-md-4 mb-3">
                         <div class="blue-box">
-                          <h3>2950</h3>
-                          <p>Friends</p>
+                          <h3 id="sd-admissionDate">-</h3>
+                          <p>Admission Date</p>
                         </div>
                       </div>
                     </div>
                     <div class="row mt-2">
                       <div class="col-md-12">
-                        <h5>Permanent Address</h5>
-                        <p>86 Lamphey Road, Thelnetham</p>
-                      </div>
-                    </div>
-                    <div class="row mt-2">
-                      <div class="col-md-12">
-                        <h5>Present Address</h5>
-                        <p>86 Lamphey Road, Thelnetham</p>
+                        <h5>Address</h5>
+                        <p id="sd-address">-</p>
                       </div>
                     </div>
                   </div>
@@ -691,5 +670,8 @@
     <script src="assets/plugins/slimscroll/jquery.slimscroll.min.js"></script>
 
     <script src="assets/js/script.js"></script>
+<script src="assets/js/tms/api.js"></script>
+<script src="assets/js/tms/guard.js"></script>
+<script src="assets/js/tms/student-details.js"></script>
   </body>
 </html>

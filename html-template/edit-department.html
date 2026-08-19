@@ -457,7 +457,8 @@
             <div class="col-sm-12">
               <div class="card">
                 <div class="card-body">
-                  <form>
+                  <form id="departmentForm" novalidate>
+                    <div id="departmentFormAlert"></div>
                     <div class="row">
                       <div class="col-12">
                         <h5 class="form-title">
@@ -466,48 +467,18 @@
                       </div>
                       <div class="col-12 col-sm-6">
                         <div class="form-group">
-                          <label>Department ID</label>
-                          <input
-                            type="text"
-                            class="form-control"
-                            value="PRE1534"
-                          />
-                        </div>
-                      </div>
-                      <div class="col-12 col-sm-6">
-                        <div class="form-group">
                           <label>Department Name</label>
-                          <input type="text" class="form-control" value="MCA" />
-                        </div>
-                      </div>
-                      <div class="col-12 col-sm-6">
-                        <div class="form-group">
-                          <label>Head of Department</label>
-                          <input
-                            type="text"
-                            class="form-control"
-                            value="Lois A"
-                          />
-                        </div>
-                      </div>
-                      <div class="col-12 col-sm-6">
-                        <div class="form-group">
-                          <label>Department Start Date</label>
-                          <input
-                            type="text"
-                            class="form-control"
-                            value="1992"
-                          />
-                        </div>
-                      </div>
-                      <div class="col-12 col-sm-6">
-                        <div class="form-group">
-                          <label>No of Students</label>
-                          <input type="text" class="form-control" value="200" />
+                          <input type="text" class="form-control" name="name" id="name" required />
                         </div>
                       </div>
                       <div class="col-12">
-                        <button type="submit" class="btn btn-primary">
+                        <div class="form-group">
+                          <label>Description</label>
+                          <textarea class="form-control" name="description" id="description" rows="3"></textarea>
+                        </div>
+                      </div>
+                      <div class="col-12">
+                        <button type="submit" class="btn btn-primary" id="departmentSubmit">
                           Submit
                         </button>
                       </div>
@@ -529,5 +500,8 @@
     <script src="assets/plugins/slimscroll/jquery.slimscroll.min.js"></script>
 
     <script src="assets/js/script.js"></script>
+<script src="assets/js/tms/api.js"></script>
+<script src="assets/js/tms/guard.js"></script>
+<script src="assets/js/tms/department-form.js"></script>
   </body>
 </html>

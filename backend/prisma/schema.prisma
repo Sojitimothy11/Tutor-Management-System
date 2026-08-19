@@ -1,0 +1,186 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "sqlite"
+  url      = env("DATABASE_URL")
+}
+
+enum Role {
+  ADMIN
+  TEACHER
+  STUDENT
+}
+
+enum Gender {
+  MALE
+  FEMALE
+  OTHER
+}
+
+enum Status {
+  ACTIVE
+  INACTIVE
+}
+
+enum PaymentStatus {
+  PENDING
+  PARTIAL
+  PAID
+}
+
+model User {
+  id        Int      @id @default(autoincrement())
+  name      String
+  email     String   @unique
+  password  String
+  role      Role     @default(STUDENT)
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  student Student?
+  teacher Teacher?
+}
+
+model Department {
+  id          Int      @id @default(autoincrement())
+  name        String   @unique
+  description String?
+  createdAt   DateTime @default(now())
+
+  students      Student[]
+  teachers      Teacher[]
+  subjects      Subject[]
+  feeStructures FeeStructure[]
+}
+
+model Student {
+  id            Int       @id @default(autoincrement())
+  admissionNo   String    @unique
+  firstName     String
+  lastName      String
+  gender        Gender?
+  dob           DateTime?
+  phone         String?
+  address       String?
+  guardianName  String?
+  guardianPhone String?
+  admissionDate DateTime  @default(now())
+  status        Status    @default(ACTIVE)
+
+  userId Int?  @unique
+  user   User? @relation(fields: [userId], references: [id], onDelete: SetNull)
+
+  departmentId Int?
+  department   Department? @relation(fields: [departmentId], references: [id], onDelete: SetNull)
+
+  feePayments FeePayment[]
+  examResults ExamResult[]
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+model Teacher {
+  id            Int      @id @default(autoincrement())
+  employeeId    String   @unique
+  firstName     String
+  lastName      String
+  gender        Gender?
+  phone         String?
+  address       String?
+  qualification String?
+  joiningDate   DateTime @default(now())
+  status        Status   @default(ACTIVE)
+
+  userId Int?  @unique
+  user   User? @relation(fields: [userId], references: [id], onDelete: SetNull)
+
+  departmentId Int?
+  department   Department? @relation(fields: [departmentId], references: [id], onDelete: SetNull)
+
+  subjects Subject[]
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+model Subject {
+  id   Int    @id @default(autoincrement())
+  name String
+  code String @unique
+
+  departmentId Int?
+  department   Department? @relation(fields: [departmentId], references: [id], onDelete: SetNull)
+
+  teacherId Int?
+  teacher   Teacher? @relation(fields: [teacherId], references: [id], onDelete: SetNull)
+
+  exams Exam[]
+
+  createdAt DateTime @default(now())
+}
+
+model FeeStructure {
+  id           Int       @id @default(autoincrement())
+  name         String
+  amount       Float
+  academicYear String
+  dueDate      DateTime?
+
+  departmentId Int?
+  department   Department? @relation(fields: [departmentId], references: [id], onDelete: SetNull)
+
+  payments FeePayment[]
+
+  createdAt DateTime @default(now())
+}
+
+model FeePayment {
+  id             Int           @id @default(autoincrement())
+  amountPaid     Float
+  paymentDate    DateTime      @default(now())
+  paymentMethod  String?
+  status         PaymentStatus @default(PENDING)
+
+  studentId Int
+  student   Student @relation(fields: [studentId], references: [id], onDelete: Cascade)
+
+  feeStructureId Int
+  feeStructure   FeeStructure @relation(fields: [feeStructureId], references: [id], onDelete: Cascade)
+
+  createdAt DateTime @default(now())
+}
+
+model Exam {
+  id           Int      @id @default(autoincrement())
+  name         String
+  examDate     DateTime
+  totalMarks   Float
+  passingMarks Float
+
+  subjectId Int
+  subject   Subject @relation(fields: [subjectId], references: [id], onDelete: Cascade)
+
+  results ExamResult[]
+
+  createdAt DateTime @default(now())
+}
+
+model ExamResult {
+  id            Int     @id @default(autoincrement())
+  marksObtained Float
+  grade         String?
+  remarks       String?
+
+  examId Int
+  exam   Exam @relation(fields: [examId], references: [id], onDelete: Cascade)
+
+  studentId Int
+  student   Student @relation(fields: [studentId], references: [id], onDelete: Cascade)
+
+  createdAt DateTime @default(now())
+
+  @@unique([examId, studentId])
+}

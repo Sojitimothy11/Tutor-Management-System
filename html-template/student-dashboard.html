@@ -445,8 +445,7 @@
           <div class="page-header">
             <div class="row">
               <div class="col-sm-12">
-                <h3 class="page-title">Welcome Humphries!</h3>
-                <h5 class="">Cohort 2026!</h5>
+                <h3 class="page-title" id="student-dash-welcome">Welcome!</h3>
                 <ul class="breadcrumb">
                   <li class="breadcrumb-item">
                     <a href="index.html">Dashboard</a>
@@ -457,6 +456,7 @@
             </div>
           </div>
 
+          <div id="studentDashAlert"></div>
           <div class="row">
             <div class="col-xl-3 col-sm-6 col-12 d-flex">
               <div class="card bg-nine w-100">
@@ -465,11 +465,11 @@
                     class="db-widgets d-flex justify-content-between align-items-center"
                   >
                     <div class="db-icon">
-                      <i class="fas fa-book-open"></i>
+                      <i class="fas fa-id-card"></i>
                     </div>
                     <div class="db-info">
-                      <h3>04/06</h3>
-                      <h6>All Courses</h6>
+                      <h3 id="sdash-admissionNo">-</h3>
+                      <h6>Admission No</h6>
                     </div>
                   </div>
                 </div>
@@ -482,11 +482,11 @@
                     class="db-widgets d-flex justify-content-between align-items-center"
                   >
                     <div class="db-icon">
-                      <i class="fas fa-file-alt"></i>
+                      <i class="fas fa-building"></i>
                     </div>
                     <div class="db-info">
-                      <h3>40/60</h3>
-                      <h6>All Projects</h6>
+                      <h3 id="sdash-department">-</h3>
+                      <h6>Department</h6>
                     </div>
                   </div>
                 </div>
@@ -502,8 +502,8 @@
                       <i class="fas fa-clipboard-list"></i>
                     </div>
                     <div class="db-info">
-                      <h3>30/50</h3>
-                      <h6>Test Attended</h6>
+                      <h3 id="sdash-resultsCount">0</h3>
+                      <h6>Exam Results</h6>
                     </div>
                   </div>
                 </div>
@@ -516,12 +516,57 @@
                     class="db-widgets d-flex justify-content-between align-items-center"
                   >
                     <div class="db-icon">
-                      <i class="fas fa-clipboard-check"></i>
+                      <i class="fas fa-file-invoice-dollar"></i>
                     </div>
                     <div class="db-info">
-                      <h3>15/20</h3>
-                      <h6>Test Passed</h6>
+                      <h3 id="sdash-feesPaid">-</h3>
+                      <h6>Fees Paid</h6>
                     </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="col-12 col-lg-6">
+              <div class="card">
+                <div class="card-body">
+                  <h5 class="card-title">My Exam Results</h5>
+                  <div class="table-responsive">
+                    <table class="table table-hover table-center mb-0">
+                      <thead>
+                        <tr>
+                          <th>Exam</th>
+                          <th>Marks</th>
+                          <th>Grade</th>
+                        </tr>
+                      </thead>
+                      <tbody id="sdash-resultsBody">
+                        <tr><td colspan="3" class="text-center">Loading...</td></tr>
+                      </tbody>
+                    </table>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="col-12 col-lg-6">
+              <div class="card">
+                <div class="card-body">
+                  <h5 class="card-title">My Fee Payments</h5>
+                  <div class="table-responsive">
+                    <table class="table table-hover table-center mb-0">
+                      <thead>
+                        <tr>
+                          <th>Fee</th>
+                          <th>Amount</th>
+                          <th>Status</th>
+                        </tr>
+                      </thead>
+                      <tbody id="sdash-paymentsBody">
+                        <tr><td colspan="3" class="text-center">Loading...</td></tr>
+                      </tbody>
+                    </table>
                   </div>
                 </div>
               </div>
@@ -782,5 +827,8 @@
     <script src="assets/js/circle-progress.min.js"></script>
 
     <script src="assets/js/script.js"></script>
+<script src="assets/js/tms/api.js"></script>
+<script src="assets/js/tms/guard.js"></script>
+<script src="assets/js/tms/dashboard-student.js"></script>
   </body>
 </html>

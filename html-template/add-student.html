@@ -301,7 +301,8 @@
                   <div class="col-sm-12">
                      <div class="card">
                         <div class="card-body">
-                           <form>
+                           <form id="studentForm" novalidate>
+                              <div id="studentFormAlert"></div>
                               <div class="row">
                                  <div class="col-12">
                                     <h5 class="form-title"><span>Student Information</span></h5>
@@ -309,29 +310,29 @@
                                  <div class="col-12 col-sm-6">
                                     <div class="form-group">
                                        <label>First Name</label>
-                                       <input type="text" class="form-control">
+                                       <input type="text" class="form-control" name="firstName" id="firstName" required>
                                     </div>
                                  </div>
                                  <div class="col-12 col-sm-6">
                                     <div class="form-group">
                                        <label>Last Name</label>
-                                       <input type="text" class="form-control">
+                                       <input type="text" class="form-control" name="lastName" id="lastName" required>
                                     </div>
                                  </div>
                                  <div class="col-12 col-sm-6">
                                     <div class="form-group">
-                                       <label>Student Id</label>
-                                       <input type="text" class="form-control">
+                                       <label>Admission Number</label>
+                                       <input type="text" class="form-control" name="admissionNo" id="admissionNo" required>
                                     </div>
                                  </div>
                                  <div class="col-12 col-sm-6">
                                     <div class="form-group">
                                        <label>Gender</label>
-                                       <select class="form-control">
-                                          <option>Select Gender</option>
-                                          <option>Female</option>
-                                          <option>Male</option>
-                                          <option>Others</option>
+                                       <select class="form-control" name="gender" id="gender">
+                                          <option value="">Select Gender</option>
+                                          <option value="FEMALE">Female</option>
+                                          <option value="MALE">Male</option>
+                                          <option value="OTHER">Others</option>
                                        </select>
                                     </div>
                                  </div>
@@ -339,119 +340,64 @@
                                     <div class="form-group">
                                        <label>Date of Birth</label>
                                        <div>
-                                          <input type="date" class="form-control">
+                                          <input type="date" class="form-control" name="dob" id="dob">
                                        </div>
                                     </div>
                                  </div>
                                  <div class="col-12 col-sm-6">
                                     <div class="form-group">
-                                       <label>Class</label>
-                                       <input type="text" class="form-control">
+                                       <label>Department</label>
+                                       <select class="form-control" name="departmentId" id="departmentId">
+                                          <option value="">-- None --</option>
+                                       </select>
                                     </div>
                                  </div>
                                  <div class="col-12 col-sm-6">
                                     <div class="form-group">
-                                       <label>Religion</label>
-                                       <input type="text" class="form-control">
-                                    </div>
-                                 </div>
-                                 <div class="col-12 col-sm-6">
-                                    <div class="form-group">
-                                       <label>Joining Date</label>
+                                       <label>Admission Date</label>
                                        <div>
-                                          <input type="date" class="form-control">
+                                          <input type="date" class="form-control" name="admissionDate" id="admissionDate">
                                        </div>
                                     </div>
                                  </div>
                                  <div class="col-12 col-sm-6">
                                     <div class="form-group">
                                        <label>Mobile Number</label>
-                                       <input type="text" class="form-control">
+                                       <input type="text" class="form-control" name="phone" id="phone">
                                     </div>
                                  </div>
                                  <div class="col-12 col-sm-6">
                                     <div class="form-group">
-                                       <label>Admission Number</label>
-                                       <input type="text" class="form-control">
-                                    </div>
-                                 </div>
-                                 <div class="col-12 col-sm-6">
-                                    <div class="form-group">
-                                       <label>Section</label>
-                                       <input type="text" class="form-control">
-                                    </div>
-                                 </div>
-                                 <div class="col-12 col-sm-6">
-                                    <div class="form-group">
-                                       <label>Student Image</label>
-                                       <input type="file" class="form-control">
+                                       <label>Status</label>
+                                       <select class="form-control" name="status" id="status">
+                                          <option value="ACTIVE">Active</option>
+                                          <option value="INACTIVE">Inactive</option>
+                                       </select>
                                     </div>
                                  </div>
                                  <div class="col-12">
-                                    <h5 class="form-title"><span>Parent Information</span></h5>
+                                    <h5 class="form-title"><span>Guardian Information</span></h5>
                                  </div>
                                  <div class="col-12 col-sm-6">
                                     <div class="form-group">
-                                       <label>Father's Name</label>
-                                       <input type="text" class="form-control">
+                                       <label>Guardian Name</label>
+                                       <input type="text" class="form-control" name="guardianName" id="guardianName">
                                     </div>
                                  </div>
                                  <div class="col-12 col-sm-6">
                                     <div class="form-group">
-                                       <label>Father's Occupation</label>
-                                       <input type="text" class="form-control">
-                                    </div>
-                                 </div>
-                                 <div class="col-12 col-sm-6">
-                                    <div class="form-group">
-                                       <label>Father's Mobile</label>
-                                       <input type="text" class="form-control">
-                                    </div>
-                                 </div>
-                                 <div class="col-12 col-sm-6">
-                                    <div class="form-group">
-                                       <label>Father's Email</label>
-                                       <input type="email" class="form-control">
-                                    </div>
-                                 </div>
-                                 <div class="col-12 col-sm-6">
-                                    <div class="form-group">
-                                       <label>Mother's Name</label>
-                                       <input type="text" class="form-control">
-                                    </div>
-                                 </div>
-                                 <div class="col-12 col-sm-6">
-                                    <div class="form-group">
-                                       <label>Mother's Occupation</label>
-                                       <input type="text" class="form-control">
-                                    </div>
-                                 </div>
-                                 <div class="col-12 col-sm-6">
-                                    <div class="form-group">
-                                       <label>Mother's Mobile</label>
-                                       <input type="text" class="form-control">
-                                    </div>
-                                 </div>
-                                 <div class="col-12 col-sm-6">
-                                    <div class="form-group">
-                                       <label>Mother's Email</label>
-                                       <input type="email" class="form-control">
-                                    </div>
-                                 </div>
-                                 <div class="col-12 col-sm-6">
-                                    <div class="form-group">
-                                       <label>Present Address</label>
-                                       <textarea class="form-control"></textarea>
-                                    </div>
-                                 </div>
-                                 <div class="col-12 col-sm-6">
-                                    <div class="form-group">
-                                       <label>Permanent Address</label>
-                                       <textarea class="form-control"></textarea>
+                                       <label>Guardian Mobile</label>
+                                       <input type="text" class="form-control" name="guardianPhone" id="guardianPhone">
                                     </div>
                                  </div>
                                  <div class="col-12">
-                                    <button type="submit" class="btn btn-primary">Submit</button>
+                                    <div class="form-group">
+                                       <label>Address</label>
+                                       <textarea class="form-control" name="address" id="address"></textarea>
+                                    </div>
+                                 </div>
+                                 <div class="col-12">
+                                    <button type="submit" class="btn btn-primary" id="studentSubmit">Submit</button>
                                  </div>
                               </div>
                            </form>
@@ -467,5 +413,8 @@
       <script src="assets/plugins/bootstrap/js/bootstrap.min.js"></script>
       <script src="assets/plugins/slimscroll/jquery.slimscroll.min.js"></script>
       <script src="assets/js/script.js"></script>
+<script src="assets/js/tms/api.js"></script>
+<script src="assets/js/tms/guard.js"></script>
+<script src="assets/js/tms/student-form.js"></script>
    </body>
 </html>

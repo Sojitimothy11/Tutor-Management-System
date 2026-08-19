@@ -463,85 +463,60 @@
                 <div class="col-md-12">
                   <div class="about-info">
                     <h4>About Me</h4>
+                    <div id="teacherDetailsAlert"></div>
                     <div class="media mt-3">
                       <img src="assets/img/user.jpg" class="mr-3" alt="..." />
                       <div class="media-body">
                         <ul>
                           <li>
                             <span class="title-span">Full Name : </span>
-                            <span class="info-span">Daisy Parks</span>
+                            <span class="info-span" id="td-name">-</span>
+                          </li>
+                          <li>
+                            <span class="title-span">Employee ID : </span>
+                            <span class="info-span" id="td-employeeId">-</span>
                           </li>
                           <li>
                             <span class="title-span">Department : </span>
-                            <span class="info-span">Computer Science</span>
+                            <span class="info-span" id="td-department">-</span>
                           </li>
                           <li>
                             <span class="title-span">Mobile : </span>
-                            <span class="info-span">+91 89657 48512</span>
-                          </li>
-                          <li>
-                            <span class="title-span">Email : </span>
-                            <span class="info-span"
-                              ><a
-                                href="https://preschool.dreamguystech.com/cdn-cgi/l/email-protection"
-                                class="__cf_email__"
-                                data-cfemail="a3c7c2cad0dae3c4cec2cacf8dc0ccce"
-                                >[email&#160;protected]</a
-                              ></span
-                            >
+                            <span class="info-span" id="td-phone">-</span>
                           </li>
                           <li>
                             <span class="title-span">Gender : </span>
-                            <span class="info-span">Male</span>
+                            <span class="info-span" id="td-gender">-</span>
                           </li>
                           <li>
-                            <span class="title-span">DOB : </span>
-                            <span class="info-span">22 Apr 1995</span>
+                            <span class="title-span">Qualification : </span>
+                            <span class="info-span" id="td-qualification">-</span>
+                          </li>
+                          <li>
+                            <span class="title-span">Status : </span>
+                            <span class="info-span" id="td-status">-</span>
                           </li>
                         </ul>
-                      </div>
-                    </div>
-                    <div class="row mt-3">
-                      <div class="col-md-12">
-                        <p>
-                          Passionate educator specialising in Computer Science,
-                          dedicated to inspiring students through project-based
-                          learning and real-world problem solving. Over 8 years
-                          of experience bridging theory and practice in higher
-                          education.
-                        </p>
                       </div>
                     </div>
                     <div class="row follow-sec">
                       <div class="col-md-4 mb-3">
                         <div class="blue-box">
-                          <h3>2850</h3>
-                          <p>Followers</p>
+                          <h3 id="td-joiningDate">-</h3>
+                          <p>Joining Date</p>
                         </div>
                       </div>
                       <div class="col-md-4 mb-3">
-                        <div class="blue-box">
-                          <h3>2050</h3>
-                          <p>Following</p>
-                        </div>
-                      </div>
-                      <div class="col-md-4 mb-3">
-                        <div class="blue-box">
-                          <h3>2950</h3>
-                          <p>Friends</p>
+                        <div class="blue-box" id="td-subjects-box">
+                          <h3 id="td-subjectsCount">0</h3>
+                          <p>Subjects Taught</p>
                         </div>
                       </div>
                     </div>
                     <div class="row mt-2">
                       <div class="col-md-12">
-                        <h5>Permanent Address</h5>
-                        <p>480, Estern Avenue, Courtage area, New York</p>
-                      </div>
-                    </div>
-                    <div class="row mt-2">
-                      <div class="col-md-12">
-                        <h5>Present Address</h5>
-                        <p>480, Estern Avenue, Courtage area, New York</p>
+                        <h5>Address</h5>
+                        <p id="td-address">-</p>
                       </div>
                     </div>
                   </div>
@@ -702,5 +677,8 @@
     <script src="assets/plugins/slimscroll/jquery.slimscroll.min.js"></script>
 
     <script src="assets/js/script.js"></script>
+<script src="assets/js/tms/api.js"></script>
+<script src="assets/js/tms/guard.js"></script>
+<script src="assets/js/tms/teacher-details.js"></script>
   </body>
 </html>

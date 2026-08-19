@@ -436,6 +436,7 @@
               </div>
             </div>
           </div>
+          <div id="dashboardAlert"></div>
           <div class="row">
             <div class="col-xl-3 col-sm-6 col-12 d-flex">
               <div class="card bg-one w-100">
@@ -447,7 +448,7 @@
                       <i class="fas fa-user-graduate"></i>
                     </div>
                     <div class="db-info">
-                      <h3>50055</h3>
+                      <h3 id="dash-students-count">-</h3>
                       <h6>Students</h6>
                     </div>
                   </div>
@@ -464,8 +465,8 @@
                       <i class="fas fa-crown"></i>
                     </div>
                     <div class="db-info">
-                      <h3>50+</h3>
-                      <h6>Awards</h6>
+                      <h3 id="dash-teachers-count">-</h3>
+                      <h6>Teachers</h6>
                     </div>
                   </div>
                 </div>
@@ -481,7 +482,7 @@
                       <i class="fas fa-building"></i>
                     </div>
                     <div class="db-info">
-                      <h3>17</h3>
+                      <h3 id="dash-departments-count">-</h3>
                       <h6>Department</h6>
                     </div>
                   </div>
@@ -498,8 +499,8 @@
                       <i class="fas fa-file-invoice-dollar"></i>
                     </div>
                     <div class="db-info">
-                      <h3>£100,000</h3>
-                      <h6>Revenue</h6>
+                      <h3 id="dash-revenue">-</h3>
+                      <h6>Fees Collected</h6>
                     </div>
                   </div>
                 </div>
@@ -734,5 +735,8 @@
     <script src="assets/plugins/apexchart/apexcharts.min.js"></script>
     <script src="assets/plugins/apexchart/chart-data.js"></script>
     <script src="assets/js/script.js"></script>
+<script src="assets/js/tms/api.js"></script>
+<script src="assets/js/tms/guard.js"></script>
+<script src="assets/js/tms/dashboard-admin.js"></script>
   </body>
 </html>

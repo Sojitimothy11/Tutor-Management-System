@@ -39,25 +39,30 @@
               <div class="login-right-wrap">
                 <h1>Login</h1>
                 <p class="account-subtitle">Access to our dashboard</p>
-                <form
-                  action="https://preschool.dreamguystech.com/html-template/index.html"
-                >
+                <form id="loginForm" novalidate>
+                  <div id="loginAlert"></div>
                   <div class="form-group">
                     <input
                       class="form-control"
-                      type="text"
+                      type="email"
+                      name="email"
+                      id="email"
                       placeholder="Email"
+                      required
                     />
                   </div>
                   <div class="form-group">
                     <input
                       class="form-control"
-                      type="text"
+                      type="password"
+                      name="password"
+                      id="password"
                       placeholder="Password"
+                      required
                     />
                   </div>
                   <div class="form-group">
-                    <button class="btn btn-primary btn-block" type="submit">
+                    <button class="btn btn-primary btn-block" type="submit" id="loginSubmit">
                       Login
                     </button>
                   </div>
@@ -88,5 +93,7 @@
     <script src="assets/js/popper.min.js"></script>
     <script src="assets/plugins/bootstrap/js/bootstrap.min.js"></script>
     <script src="assets/js/script.js"></script>
+    <script src="assets/js/tms/api.js"></script>
+    <script src="assets/js/tms/login.js"></script>
   </body>
 </html>

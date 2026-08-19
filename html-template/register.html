@@ -44,39 +44,56 @@
                 <h1>Register</h1>
                 <p class="account-subtitle">Access to our dashboard</p>
 
-                <form
-                  action="https://preschool.dreamguystech.com/html-template/login.html"
-                >
+                <form id="registerForm" novalidate>
+                  <div id="registerAlert"></div>
+                  <p class="text-muted small">
+                    New accounts are created with the Student role. Ask an administrator
+                    to set up Teacher or Admin accounts.
+                  </p>
                   <div class="form-group">
                     <input
                       class="form-control"
                       type="text"
+                      name="name"
+                      id="name"
                       placeholder="Name"
+                      required
                     />
                   </div>
                   <div class="form-group">
                     <input
                       class="form-control"
-                      type="text"
+                      type="email"
+                      name="email"
+                      id="email"
                       placeholder="Email"
+                      required
                     />
                   </div>
                   <div class="form-group">
                     <input
                       class="form-control"
-                      type="text"
+                      type="password"
+                      name="password"
+                      id="password"
                       placeholder="Password"
+                      minlength="6"
+                      required
                     />
                   </div>
                   <div class="form-group">
                     <input
                       class="form-control"
-                      type="text"
+                      type="password"
+                      name="confirmPassword"
+                      id="confirmPassword"
                       placeholder="Confirm Password"
+                      minlength="6"
+                      required
                     />
                   </div>
                   <div class="form-group mb-0">
-                    <button class="btn btn-primary btn-block" type="submit">
+                    <button class="btn btn-primary btn-block" type="submit" id="registerSubmit">
                       Register
                     </button>
                   </div>
@@ -110,5 +127,7 @@
     <script src="assets/plugins/bootstrap/js/bootstrap.min.js"></script>
 
     <script src="assets/js/script.js"></script>
+    <script src="assets/js/tms/api.js"></script>
+    <script src="assets/js/tms/register.js"></script>
   </body>
 </html>

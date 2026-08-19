@@ -451,13 +451,9 @@
                     </a>
                   </div>
                   <div class="col ml-md-n2 profile-user-info">
-                    <h4 class="user-name mb-0">Ryan Taylor</h4>
-                    <h6 class="text-muted">UI/UX Design Team</h6>
-                    <div class="user-Location">
-                      <i class="fas fa-map-marker-alt"></i> Florida, United
-                      States
-                    </div>
-                    <div class="about-text">Computer Science Department.</div>
+                    <h4 class="user-name mb-0" id="profile-name">-</h4>
+                    <h6 class="text-muted" id="profile-role">-</h6>
+                    <div class="about-text" id="profile-email">-</div>
                   </div>
                   <div class="col-auto profile-btn">
                     <a href="#" class="btn btn-primary"> Edit </a>
@@ -489,28 +485,15 @@
                         <div class="card-body">
                           <h5 class="card-title d-flex justify-content-between">
                             <span>Personal Details</span>
-                            <a
-                              class="edit-link"
-                              data-toggle="modal"
-                              href="#edit_personal_details"
-                              ><i class="far fa-edit mr-1"></i>Edit</a
-                            >
                           </h5>
+                          <div id="profileAlert"></div>
                           <div class="row">
                             <p
                               class="col-sm-3 text-muted text-sm-right mb-0 mb-sm-3"
                             >
                               Name
                             </p>
-                            <p class="col-sm-9">Ryan Taylor</p>
-                          </div>
-                          <div class="row">
-                            <p
-                              class="col-sm-3 text-muted text-sm-right mb-0 mb-sm-3"
-                            >
-                              Date of Birth
-                            </p>
-                            <p class="col-sm-9">24 Jul 1983</p>
+                            <p class="col-sm-9" id="profile-name-2">-</p>
                           </div>
                           <div class="row">
                             <p
@@ -518,7 +501,15 @@
                             >
                               Email ID
                             </p>
-                            <p class="col-sm-9">ryan_taylor@gmail.com</p>
+                            <p class="col-sm-9" id="profile-email-2">-</p>
+                          </div>
+                          <div class="row">
+                            <p
+                              class="col-sm-3 text-muted text-sm-right mb-0 mb-sm-3"
+                            >
+                              Role
+                            </p>
+                            <p class="col-sm-9" id="profile-role-2">-</p>
                           </div>
                           <div class="row">
                             <p
@@ -526,18 +517,13 @@
                             >
                               Mobile
                             </p>
-                            <p class="col-sm-9">305-310-5857</p>
+                            <p class="col-sm-9" id="profile-phone">-</p>
                           </div>
                           <div class="row">
                             <p class="col-sm-3 text-muted text-sm-right mb-0">
                               Address
                             </p>
-                            <p class="col-sm-9 mb-0">
-                              4663 Agriculture Lane,<br />
-                              Miami,<br />
-                              Florida - 33165,<br />
-                              United States.
-                            </p>
+                            <p class="col-sm-9 mb-0" id="profile-address">-</p>
                           </div>
                         </div>
                       </div>
@@ -547,11 +533,8 @@
                         <div class="card-body">
                           <h5 class="card-title d-flex justify-content-between">
                             <span>Account Status</span>
-                            <a class="edit-link" href="#"
-                              ><i class="far fa-edit mr-1"></i> Edit</a
-                            >
                           </h5>
-                          <button class="btn btn-success" type="button">
+                          <button class="btn btn-success" type="button" id="profile-status-btn">
                             <i class="fe fe-check-verified"></i> Active
                           </button>
                         </div>
@@ -559,20 +542,19 @@
                       <div class="card">
                         <div class="card-body">
                           <h5 class="card-title d-flex justify-content-between">
-                            <span>Skills </span>
-                            <a class="edit-link" href="#"
-                              ><i class="far fa-edit mr-1"></i> Edit</a
-                            >
+                            <span>Profile Info</span>
                           </h5>
-                          <div class="skill-tags">
-                            <span>Html5</span>
-                            <span>CSS3</span>
-                            <span>WordPress</span>
-                            <span>Javascript</span>
-                            <span>Android</span>
-                            <span>iOS</span>
-                            <span>Angular</span>
-                            <span>PHP</span>
+                          <div class="row">
+                            <p class="col-6 text-muted mb-1">Joined</p>
+                            <p class="col-6 mb-1" id="profile-joined">-</p>
+                          </div>
+                          <div class="row">
+                            <p class="col-6 text-muted mb-1" id="profile-id-label">ID</p>
+                            <p class="col-6 mb-1" id="profile-id-value">-</p>
+                          </div>
+                          <div class="row">
+                            <p class="col-6 text-muted mb-1" id="profile-dept-label">Department</p>
+                            <p class="col-6 mb-1" id="profile-dept-value">-</p>
                           </div>
                         </div>
                       </div>
@@ -585,20 +567,21 @@
                       <h5 class="card-title">Change Password</h5>
                       <div class="row">
                         <div class="col-md-10 col-lg-6">
-                          <form>
+                          <form id="changePasswordForm" novalidate>
+                            <div id="passwordFormAlert"></div>
                             <div class="form-group">
                               <label>Old Password</label>
-                              <input type="password" class="form-control" />
+                              <input type="password" class="form-control" name="currentPassword" id="currentPassword" required />
                             </div>
                             <div class="form-group">
                               <label>New Password</label>
-                              <input type="password" class="form-control" />
+                              <input type="password" class="form-control" name="newPassword" id="newPassword" minlength="6" required />
                             </div>
                             <div class="form-group">
                               <label>Confirm Password</label>
-                              <input type="password" class="form-control" />
+                              <input type="password" class="form-control" name="confirmNewPassword" id="confirmNewPassword" minlength="6" required />
                             </div>
-                            <button class="btn btn-primary" type="submit">
+                            <button class="btn btn-primary" type="submit" id="changePasswordSubmit">
                               Save Changes
                             </button>
                           </form>
@@ -622,5 +605,8 @@
     <script src="assets/plugins/bootstrap/js/bootstrap.min.js"></script>
     <script src="assets/plugins/slimscroll/jquery.slimscroll.min.js"></script>
     <script src="assets/js/script.js"></script>
+<script src="assets/js/tms/api.js"></script>
+<script src="assets/js/tms/guard.js"></script>
+<script src="assets/js/tms/profile.js"></script>
   </body>
 </html>
