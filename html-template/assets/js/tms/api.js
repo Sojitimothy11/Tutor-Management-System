@@ -3,7 +3,12 @@
  * Loaded on every page, before guard.js and any page-specific script.
  */
 (function (window) {
-  const API_BASE_URL = "http://localhost:5000/api";
+  // Local dev (served from localhost) talks to the local backend; anywhere
+  // else (the deployed frontend) talks to the deployed backend.
+  const isLocal = ["localhost", "127.0.0.1"].includes(window.location.hostname);
+  const API_BASE_URL = isLocal
+    ? "http://localhost:5000/api"
+    : "https://backend-mocha-two-94.vercel.app/api";
   const TOKEN_KEY = "tms_token";
   const USER_KEY = "tms_user";
 
