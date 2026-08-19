@@ -1,12 +1,14 @@
 # TMS Backend API
 
 A REST API for the Tutor Management System frontend (`../html-template`). Built with
-Node.js, Express, Prisma, and SQLite.
+Node.js, Express, Prisma, and PostgreSQL. Deployed on Vercel at
+`https://backend-mocha-two-94.vercel.app/api`, with a [Neon](https://neon.tech) Postgres
+database provisioned through the Vercel Marketplace.
 
 ## Stack
 
 - **Express 4** — HTTP server & routing
-- **Prisma 6 + SQLite** — ORM & database (file-based, zero external setup)
+- **Prisma 6 + PostgreSQL** — ORM & database (Neon in production; any Postgres locally)
 - **JWT (jsonwebtoken) + bcryptjs** — authentication
 - **Zod** — request validation
 - **helmet / cors / morgan** — security headers, CORS, request logging
@@ -22,11 +24,14 @@ those straightforward — copy an existing module (e.g. `subject`) as a template
 
 ## Getting started
 
+Requires a PostgreSQL database — a free [Neon](https://neon.tech) project works well, or any
+local/hosted Postgres instance.
+
 ```bash
 cd backend
 npm install
-cp .env.example .env        # then edit JWT_SECRET etc. if desired
-npx prisma migrate dev      # creates prisma/dev.db, applies schema, runs the seed
+cp .env.example .env        # then set DATABASE_URL (+ DATABASE_URL_UNPOOLED) and JWT_SECRET
+npx prisma migrate dev      # applies the schema and runs the seed
 npm run dev                 # starts the API on http://localhost:5000 (nodemon)
 ```
 
@@ -42,13 +47,18 @@ To re-seed without a new migration: `npm run seed`.
 
 ### Environment variables (`.env`)
 
-| Variable         | Purpose                                              |
-|------------------|-------------------------------------------------------|
-| `DATABASE_URL`   | SQLite file path, e.g. `file:./dev.db`                |
-| `JWT_SECRET`     | Secret used to sign auth tokens — change in production |
-| `JWT_EXPIRES_IN` | Token lifetime, e.g. `7d`                              |
-| `PORT`           | API port (default `5000`)                              |
-| `CORS_ORIGIN`    | Origin allowed to call the API (your frontend's URL)   |
+| Variable                 | Purpose                                                          |
+|--------------------------|--------------------------------------------------------------------|
+| `DATABASE_URL`           | Pooled Postgres connection string (used at runtime)                |
+| `DATABASE_URL_UNPOOLED`  | Direct (non-pooled) Postgres connection string (used for migrations) |
+| `JWT_SECRET`             | Secret used to sign auth tokens — change in production              |
+| `JWT_EXPIRES_IN`         | Token lifetime, e.g. `7d`                                            |
+| `PORT`                   | API port (default `5000`, unused on Vercel)                          |
+| `CORS_ORIGIN`            | Origin allowed to call the API (your frontend's URL)                 |
+
+On Vercel, `DATABASE_URL` and `DATABASE_URL_UNPOOLED` are injected automatically by the Neon
+Marketplace integration — only `JWT_SECRET`, `JWT_EXPIRES_IN`, and `CORS_ORIGIN` need to be
+set manually (Project Settings → Environment Variables).
 
 ## Auth model
 
@@ -169,10 +179,18 @@ the `prisma` CLI's config loader (`@prisma/config`). It only affects the local d
 tool, not any runtime/production code path, and fixing it currently requires a breaking
 downgrade. Safe to leave as-is for this project; revisit on the next Prisma major bump.
 
-## Connecting the existing frontend
+## Deployment
 
-The pages under `../html-template` are currently static markup with no wired-up forms or
-API calls. To connect a page, add `fetch()` calls against these endpoints (e.g. POST the
-login form to `/api/auth/login`, store the returned `token`, and send it as a Bearer
-token on subsequent requests). Set `CORS_ORIGIN` in `.env` to whatever origin/port serves
-the HTML.
+Deployed on Vercel using its zero-config **Express** framework preset (Root Directory:
+`backend`) — no `vercel.json` or serverless wrapper needed. A `postinstall` script runs
+`prisma generate` on every install so the Prisma Client matches the current schema. Database
+is Neon Postgres, provisioned via the Vercel Marketplace (`vercel integration add neon`),
+which auto-injects `DATABASE_URL` / `DATABASE_URL_UNPOOLED` into all environments.
+
+## Connecting a frontend
+
+`../html-template` is already wired up to this API (see `assets/js/tms/api.js` — it targets
+`http://localhost:5000/api` when served from localhost, and the deployed backend URL
+otherwise). For a new client, POST to `/api/auth/login`, store the returned `token`, and send
+it as `Authorization: Bearer <token>` on subsequent requests. Set `CORS_ORIGIN` to whatever
+origin serves that client.
